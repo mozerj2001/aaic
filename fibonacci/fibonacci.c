@@ -4,6 +4,21 @@
 /*This file contains fibonacci search implementations and functions that assist the search.*/
 
 
+unsigned int recFibonacciNoMiss(int x, int* array, unsigned int N){
+    unsigned int i;             // index
+    unsigned int fibNums[2];    // first Fibonacci number greater than N and the two numbers below it
+
+    findFibonacciGreaterThanN(N, fibNums);
+    i = fibNums[0];
+
+    if(array[i] == x){ return i; }
+    else if(array[i] < x){ return (i + recFibonacci(x, &array[i], N-i)); }
+    else{ return recFibonacci(x, &array[0], i); }
+
+    return -1;
+}
+
+
 unsigned int recFibonacci(int x, int* array, unsigned int N){
     unsigned int i;             // index
     unsigned int fibNums[2];    // first Fibonacci number greater than N and the two numbers below it
@@ -13,8 +28,17 @@ unsigned int recFibonacci(int x, int* array, unsigned int N){
     i = fibNums[0];
 
     if(array[i] == x){ return i; }
-    else if(array[i] < x){ return (i + recFibonacci(x, &array[i], N-i)); }
-    else{ return recFibonacci(x, &array[0], i); }
+    else if(N <= 1){ return -1; }
+    else if(array[i] < x){ 
+        tmp = recFibonacci(x, &array[i], N-i);
+        if(tmp == -1){ return -1; }
+        else { return (tmp + i); }
+    }
+    else{ 
+        tmp = recFibonacci(x, &array[0], i); 
+        if(tmp == -1){ return -1; }
+        else{ return tmp; }
+    }
 
     return -1;
 }
