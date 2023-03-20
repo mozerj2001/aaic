@@ -1,0 +1,8 @@
+# Ignore executable files.
+*.exe
+
+# Ignore VSCode files.
+*/.vscode
+
+# Ignore downloaded class folders.
+GY*
