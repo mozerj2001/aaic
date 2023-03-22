@@ -23,17 +23,18 @@ double timeRecursiveFibonacciSearch(unsigned int N){
         array[i] = rand();
     }
     qsort(array, N, sizeof(int), cmp);
-    x = array[(int) ((double)rand()/(double)RAND_MAX * (double)N)];
-    printf("%d\n", x);
-    
+
     gettimeofday(&BEFORE, 0);
-    recFibonacci(x, array, N);
+    for(i = 0; i < NO_OF_SEARCHES; i++){
+        x = array[(int) ((double)rand()/(double)RAND_MAX * (double)N)];
+        recFibonacci(x, array, N);
+        //printf("Recursive Fibonacci Search just took: %lf seconds on an array with %d elements.\n", dt, N);
+    }
     gettimeofday(&AFTER, 0);
 
     dt_usec = AFTER.tv_usec - BEFORE.tv_usec;
     dt_sec = AFTER.tv_sec - BEFORE.tv_sec;
-    dt = dt_sec + dt_usec*1e-6;
-    printf("Recursive Fibonacci Search just took: %lf seconds on an array with %d elements.", dt, N);
+    dt = dt_sec + dt_usec * 1e-6;
 
     return dt;
 }

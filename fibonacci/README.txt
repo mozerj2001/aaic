@@ -9,8 +9,15 @@ Teszt tervezet:
     3. Lehetséges optimalizációk elvégzése.
     2. Algoritmusok újbóli összehasonlítása véletlenszerűen generált számhalmazokon.
 
-PROGRAMOZÁS KÖZBENI ÉSSZREVÉTEL: A rekurzív megoldás programkódját jelentősen
+PROGRAMOZÁS KÖZBENI ÉSSZREVÉTELEK: 
+
+A rekurzív megoldás programkódját jelentősen
 komplikálja annak az esetnek a kezelése, amelyben a keresett elem nincs benne a
 tömbben, ugyanis minden iterációban ellenőrizni kell, hogy -1-et adott-e vissza
 a függvény. Így a rekurzív megoldás valószínűleg nem csak lassabb, de kevésbé
 elegáns is lesz.
+
+A következő probléma az, hogy a "gettimeofday" függvény mikroszekundum pontossággal
+mér időt. A rekurzív keresés sajnos (vagy nem sajnos) általában 1-3 mikroszekundum
+alatt eredményre jut. Ebből értelmes összehasonlítást nem lehet csinálni, így többször
+fog minden keresés lefutni.

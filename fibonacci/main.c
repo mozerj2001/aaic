@@ -2,11 +2,13 @@
 #include "fibonacci.h"
 #include "test_fibonacci.h"
 
-#define TEST_SIZE 500000
-
 int main(void){
+    unsigned int testN = TEST_SIZE;
+    double dt;
 
-    timeRecursiveFibonacciSearch(TEST_SIZE);
+    dt = timeRecursiveFibonacciSearch(testN);
+
+    printf("%lf s\n", dt);
 
     return 0;
 }
